@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="400" maxWidth="600" minHeight="400" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.farfromhome.LoginController">
+    <children>
+        <AnchorPane accessibleRole="BUTTON" blendMode="SRC_ATOP" maxHeight="400" maxWidth="243" minHeight="400" minWidth="243" prefHeight="400.0" prefWidth="243.0" style="-fx-background-color: #27AAFF;">
+            <children>
+                <Label layoutX="73.0" layoutY="219.0" text="072 690 3255">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="31.0" layoutY="288.0" text="FFH.support@gmail.com">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/house-logo.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane maxHeight="400" maxWidth="358" minHeight="400" minWidth="358" prefHeight="400.0" prefWidth="358.0">
+            <children>
+                <Label layoutX="14.0" layoutY="180.0" text="User name">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="226.0" text="Password">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_username" layoutX="126.0" layoutY="177.0" maxHeight="26" maxWidth="214" minHeight="26" minWidth="214" prefHeight="26.0" prefWidth="214.0" />
+                <PasswordField fx:id="pf_password" layoutX="126.0" layoutY="223.0" prefHeight="26.0" prefWidth="214.0" />
+                <Button fx:id="button_login" layoutX="82.0" layoutY="271.0" maxHeight="38" maxWidth="214" minHeight="38" minWidth="214" mnemonicParsing="false" prefHeight="38.0" prefWidth="214.0" style="-fx-background-color: #FED700; -fx-cursor: hand;" text="Login">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_sign_up" layoutX="188.0" layoutY="335.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Sign-up" textFill="#2c2ca9" underline="true">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Label layoutX="121.0" layoutY="341.0" text="Not a user?">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lock.jfif" />
+               </image>
+            </ImageView>
+            </children></AnchorPane>
+    </children>
+</HBox>

@@ -8,11 +8,10 @@ public class GateRepository {
     public GateRepository(){
         SqlConfig.getDataBaseConnection();
     }
+    private Connection connection = SqlConfig.getDataBaseConnection();
 
     public Gate findByID() {
         String sql ="SELECT * FROM gate WHERE idGate = 8";
-        Connection connection = SqlConfig.getDataBaseConnection();
-
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -31,7 +30,6 @@ public class GateRepository {
         }
     }
     public boolean update(Gate gate){
-        Connection connection = SqlConfig.getDataBaseConnection();
         String sql= "UPDATE gate SET Open=?,Status=? WHERE idGate=8";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);

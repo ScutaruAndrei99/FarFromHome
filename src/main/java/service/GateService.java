@@ -25,6 +25,7 @@ public class GateService {
         }
         return myImg_switch;
     }
+
     public void gateWork() {
         Gate gate = gr.findByID();
         if (gate.isOpen()){

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #27AAFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.farfromhome.CentralInterface">
+    <children>
+        <Button fx:id="button_logout" layoutX="20.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #FED700;" text="Logout">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="button_home" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/house-logo.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <ScrollPane layoutX="150.0" minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="480.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="480.0">
+                    <children>
+                        <Text layoutX="174.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Central control" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="18.0" />
+                            </font></Text>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="text_temperature" fill="#0d00ff" layoutX="107.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22,3 °C">
+                     <font>
+                        <Font name="Lato Semibold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="text_humidity" fill="#0d00ff" layoutX="116.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50%">
+                     <font>
+                        <Font name="Lato Semibold" size="14.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="81.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/thermometer.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="81.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/humidity.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="text_temperatureSet" layoutX="334.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23,5 °C">
+                     <font>
+                        <Font name="Lato Semibold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="button_upTemperature" layoutX="329.0" layoutY="88.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="button_downTemperature" layoutX="329.0" layoutY="177.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                           <image>
+                              <Image url="@../images/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                    </children></AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

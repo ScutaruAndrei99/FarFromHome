@@ -1,5 +1,6 @@
 package com.tonevellah.farfromhome;
 
+import com.tonevellah.farfromhome.DBUtils;
 import constructors.Gate;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

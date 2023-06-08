@@ -59,6 +59,42 @@ public class LoggedInController implements Initializable {
                 DBUtils.gateScene(actionEvent,"/interfaces/gate.fxml");
             }
         });
+        button_TV.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.TVScene(event,"/interfaces/tv.fxml");
+            }
+        });
+        button_coffe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.ElevatorScene(event,"/interfaces/elevator.fxml");
+            }
+        });
+        button_central.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.CentralScene(event,"/interfaces/central.fxml");
+            }
+        });
+        button_elevator.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.ElevatorScene(event,"/interfaces/elevator.fxml");
+            }
+        });
+        button_curtain.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.CurtainsScene(event,"/interfaces/curtains.fxml");
+            }
+        });
+        button_vacuum.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBUtils.VacuumScene(event,"/interfaces/vacuum.fxml");
+            }
+        });
     }
 
 }

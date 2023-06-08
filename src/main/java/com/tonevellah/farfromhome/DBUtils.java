@@ -7,13 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import repository.CentralRepository;
 import repository.SqlConfig;
+import service.CentralService;
 
 import java.io.IOException;
 import java.sql.*;
 
 
-class DBUtils {
+public class DBUtils {
 
 
     public static void changeScene(ActionEvent event, String fxmlFile, String title) {
@@ -63,6 +65,94 @@ class DBUtils {
         stage.show();
     }
 
+    public static void TVScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("TV");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void EspressorScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Espressor");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void CentralScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+            CentralInterface central=loader.getController();
+            CentralService cs=new CentralService();
+            String temperature = String.valueOf(cs.readTemperature());
+            central.text_temperatureSet.setText(temperature);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Central");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void ElevatorScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Elevator");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void CurtainsScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Curtains");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void VacuumScene(ActionEvent event, String fxmlFile) {
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Vacuum");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     public static void registerUser(ActionEvent event, String username, String first_name, String last_name, String password, String email) {
         Connection connection = null;
         PreparedStatement psInsert = null;
@@ -73,7 +163,7 @@ class DBUtils {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = SqlConfig.getDataBaseConnection();
+            connection = SqlConfig.getDataBaseConnectionAccount();
             psCheckUserExists = connection.prepareStatement("SELECT username FROM accounts WHERE username = ?");
             psCheckUserExists.setString(1,username);
             resultSet = psCheckUserExists.executeQuery();
@@ -144,7 +234,7 @@ class DBUtils {
         ResultSet resultSet = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = SqlConfig.getDataBaseConnection();
+            connection = SqlConfig.getDataBaseConnectionAccount();
             preparedStatement = connection.prepareStatement("SELECT password FROM accounts WHERE username = ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();

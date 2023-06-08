@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #27AAFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.farfromhome.TVInterface">
+    <children>
+        <Button fx:id="button_logout" layoutX="20.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #FED700;" text="Logout">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="button_home" layoutX="25.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/house-logo.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <ScrollPane layoutX="150.0" minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="480.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="480.0">
+                    <children>
+                        <Text layoutX="228.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TV" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="18.0" />
+                            </font></Text>
+                  <Text layoutX="29.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press to open/close" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="50.0" layoutY="70.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0">
+                     <graphic>
+                        <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/turn-off.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Circle fx:id="cercel_status" fill="DODGERBLUE" layoutX="341.0" layoutY="112.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children></AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

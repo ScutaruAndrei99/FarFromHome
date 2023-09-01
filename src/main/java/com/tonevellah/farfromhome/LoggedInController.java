@@ -22,7 +22,7 @@ public class LoggedInController implements Initializable {
     @FXML
     private Button button_TV;
     @FXML
-    private Button button_coffe;
+    private Button button_coffee;
     @FXML
     private Button button_central;
     @FXML
@@ -65,10 +65,10 @@ public class LoggedInController implements Initializable {
                 DBUtils.TVScene(event,"/interfaces/tv.fxml");
             }
         });
-        button_coffe.setOnAction(new EventHandler<ActionEvent>() {
+        button_coffee.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.ElevatorScene(event,"/interfaces/elevator.fxml");
+                DBUtils.EspressorScene(event,"/interfaces/espressor.fxml");
             }
         });
         button_central.setOnAction(new EventHandler<ActionEvent>() {

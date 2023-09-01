@@ -11,7 +11,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/house-logo.png" />
+                  <Image url="@../images/Icon_FFH.jpg" />
                </image>
             </ImageView>
          </children></AnchorPane>

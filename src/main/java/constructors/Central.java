@@ -6,6 +6,7 @@ public class Central {
     private float temperature;
     private boolean power;
 
+
     public Central(int idCentral, float maxTemperature, boolean isPower){
         this.idCentral=2;
         this.temperature=maxTemperature;

@@ -19,9 +19,9 @@
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                     </font>
                 </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="147.0" fitWidth="182.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/house-logo.png" />
+                  <Image url="@../images/Icon_FFH.jpg" />
                </image>
             </ImageView>
             </children>

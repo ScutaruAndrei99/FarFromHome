@@ -7,10 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import repository.CentralRepository;
 import repository.SqlConfig;
 import service.CentralService;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
 
@@ -89,6 +89,19 @@ public class DBUtils {
         }
         Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Espressor");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    public static void ExpressorPrepareCoffee(ActionEvent event, String fxmlFile){
+        Parent root=null;
+        try{
+            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Prepare Coffee");
         stage.setScene(new Scene(root));
         stage.show();
     }

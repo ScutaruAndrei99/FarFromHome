@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Main-Class: com.tonevellah.farfromhome.Main
+Class-Path: protobuf-java-3.19.4.jar javafx-fxml-17.0.2-win.jar javafx-f
+ xml-17.0.2.jar javafx-graphics-17.0.2.jar javafx-graphics-17.0.2-win.ja
+ r javafx-controls-17.0.2.jar gson-2.10.1.jar okhttp-4.10.0.jar okio-jvm
+ -3.0.0.jar flexmark-0.62.2.jar annotations-15.0.jar fastjson2-2.0.20.ja
+ r okhttp-sse-4.10.0.jar openai-auth-1.0.1.jar commons-codec-1.15.jar hu
+ tool-core-5.8.12.jar hutool-http-5.8.12.jar kotlin-stdlib-1.6.20.jar fl
+ exmark-util-ast-0.62.2.jar flexmark-util-data-0.62.2.jar flexmark-util-
+ html-0.62.2.jar flexmark-util-misc-0.62.2.jar kotlin-stdlib-jdk7-1.6.10
+ .jar kotlin-stdlib-jdk8-1.6.10.jar flexmark-util-format-0.62.2.jar kotl
+ in-stdlib-common-1.6.20.jar flexmark-util-builder-0.62.2.jar flexmark-u
+ til-visitor-0.62.2.jar flexmark-util-sequence-0.62.2.jar flexmark-util-
+ collection-0.62.2.jar flexmark-util-dependency-0.62.2.jar searchableOpt
+ ions-2.1.16-203.221.jar instrumented-ChatGPT-2.1.16-203.221.jar control
+ sfx-11.1.2.jar mysql-connector-java-8.0.30.jar javafx-base-17.0.2-win.j
+ ar javafx-controls-17.0.2-win.jar javafx-base-17.0.2.jar
+

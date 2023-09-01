@@ -1,0 +1,10 @@
+.choice-box {
+    -fx-translate-y: -20px; /* Muta lista pe axa y */
+}
+
+.choice-box .context-menu {
+    -fx-pref-width: 200px; /* Lățimea listei derulante */
+    -fx-pref-height: 150px; /* Înălțimea listei derulante */
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}

@@ -16,13 +16,59 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/house-logo.png" />
+                        <Image url="@../images/Icon_FFH.jpg" />
                     </image>
                 </ImageView>
             </graphic></Button>
         <ScrollPane layoutX="150.0" minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="480.0">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="480.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="480.0">
+               <children>
+                  <Text layoutX="168.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Espressor">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="button_espressor" layoutX="25.0" layoutY="100.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/espresso.png" />
+                           </image></ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="button_cappuccino" layoutX="175.0" layoutY="100.0" mnemonicParsing="false" prefHeight="109.0" prefWidth="115.0">
+                     <graphic>
+                        <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cappuccino.png" />
+                           </image></ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="button_latte" layoutX="325.0" layoutY="100.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/latte.png" />
+                           </image></ImageView>
+                     </graphic>
+                  </Button>
+                  <Text layoutX="37.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Espresso">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="174.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cappuccino">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="358.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latte">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
             </content>
         </ScrollPane>
     </children>

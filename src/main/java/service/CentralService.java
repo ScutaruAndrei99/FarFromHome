@@ -17,7 +17,7 @@ public class CentralService {
     }
     public static String temperatureSet(){
         CentralService temperatureSet = new CentralService();
-        String temperature = String.valueOf(temperatureSet.readTemperature()) +" °C";
+        String temperature = (temperatureSet.readTemperature()) +" °C";
         return temperature;
     }
 

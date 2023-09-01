@@ -126,7 +126,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/house-logo.png" />
+                        <Image url="@../images/Icon_FFH.jpg" />
                     </image>
                 </ImageView>
             </graphic></Button>

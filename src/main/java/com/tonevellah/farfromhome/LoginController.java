@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
@@ -24,18 +22,16 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_login.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.loginUser(event, tf_username.getText(), pf_password.getText());
-                DBUtils.changeScene(event, "/interfaces/logged-in.fxml","Logged");
-            }
+
+        DBUtils db= new DBUtils();
+
+        button_login.setOnAction(event -> {
+
+            db.loginUser(event, tf_username.getText(), pf_password.getText());
+            db.changeScene(event, "/interfaces/logged-in.fxml","Logged");
         });
-        button_sign_up.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/interfaces/register.fxml", "Register your account");
-            }
-        });
+
+        button_sign_up.setOnAction(event -> db.changeScene(event, "/interfaces/register.fxml", "Register your account"));
+
     }
 }

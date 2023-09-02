@@ -1,9 +1,6 @@
 package com.tonevellah.farfromhome;
 
-import com.tonevellah.farfromhome.DBUtils;
 import constructors.Gate;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import repository.GateRepository;
@@ -33,24 +30,15 @@ public class GateInterface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged");
-            }
-        });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/login.fxml","Login!");
-            }
-        });
-        button_switch.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_switch.setImage(gs.prepareImage());
-            }
-        });
+
+        DBUtils db = new DBUtils();
+
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
+
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml","Login!"));
+
+        button_switch.setOnAction(actionEvent -> img_switch.setImage(gs.prepareImage()));
+
     }
         Image myImg_switch;
     public void setPower(){

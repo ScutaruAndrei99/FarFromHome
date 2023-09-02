@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,61 +34,49 @@ public class PrepareCoffeInterface implements Initializable {
     public Text text_intensity;
 
     public void initialize (URL url, ResourceBundle resourceBundle){
-        button_back.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.EspressorScene(event,"/interfaces/espressor.fxml");
-            }
+
+        DBUtils db = new DBUtils();
+        EspressorService es = new EspressorService();
+
+        button_back.setOnAction(event -> {
+            db.EspressorScene(event,"/interfaces/espressor.fxml");
+            es.resetPrepareSet();
         });
-        button_minus_sugar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.minusSugarSet();
-                text_sugar.setText(EspressorService.SugarSet());
-            }
+
+        button_minus_sugar.setOnAction(event -> {
+            es.minusSugar();
+            text_sugar.setText(es.readSugarSet());
         });
-        button_plus_sugar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.plusSugarSet();
-                text_sugar.setText(EspressorService.SugarSet());
-            }
+
+        button_plus_sugar.setOnAction(event -> {
+            es.plusSugar();
+            text_sugar.setText(es.readSugarSet());
         });
-        button_minus_quantity.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.minusQuantitySet();
-                text_quantity.setText(EspressorService.QuantitySet());
-            }
+
+        button_minus_quantity.setOnAction(event -> {
+            es.minusQuantity();
+            text_quantity.setText(es.readQuantitySet());
         });
-        button_plus_quantity.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.plusQuantitySet();
-                text_quantity.setText(EspressorService.QuantitySet());
-            }
+
+        button_plus_quantity.setOnAction(event -> {
+            es.plusQuantity();
+            text_quantity.setText(es.readQuantitySet());
         });
-        button_minus_intensity.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.minusIntensitySet();
-                text_intensity.setText(EspressorService.IntensitySet());
-            }
+
+        button_minus_intensity.setOnAction(event -> {
+            es.minusIntensity();
+            text_intensity.setText(es.readIntensitySet());
         });
-        button_plus_intensity.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.plusIntensitySet();
-                text_intensity.setText(EspressorService.IntensitySet());
-            }
+
+        button_plus_intensity.setOnAction(event -> {
+            es.plusIntensity();
+            text_intensity.setText(es.readIntensitySet());
         });
-        button_start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                EspressorService.prepareCoffeFinal();
-                EspressorService.resetPrepareSetFinal();
-                DBUtils.EspressorScene(event,"/interfaces/espressor.fxml");
-            }
+
+        button_start.setOnAction(event -> {
+            es.prepareCoffee();
+            es.resetPrepareSet();
+            db.EspressorScene(event,"/interfaces/espressor.fxml");
         });
     }
 }

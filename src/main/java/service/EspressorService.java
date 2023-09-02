@@ -15,19 +15,12 @@ public class EspressorService {
     public EspressorService() {
         er = new EspressorRepository();
     }
-    public static void prepareCoffeFinal () {
-        EspressorService prepare = new EspressorService();
-        prepare.prepareCoffee();
-    }
     public void typeCoffeeSelect(String typeCoffeeSelect) {
         PrepareCoffee prepare = er.findPrepare();
         prepare.setTypeCoffee(typeCoffeeSelect);
         er.updatePrepare(prepare);
     }
-    public static void typeCoffeeChosen(String typeCoffeeSelect) {
-        EspressorService prepare =new EspressorService();
-        prepare.typeCoffeeSelect(typeCoffeeSelect);
-    }
+
     public void prepareCoffee() {
         Espressor espressor = er.findById(1);
         PrepareCoffee prepare =er.findPrepare();
@@ -96,10 +89,6 @@ public class EspressorService {
             }
         }
     }
-    public static void resetPrepareSetFinal() {
-        EspressorService prepareFinal = new EspressorService();
-        prepareFinal.resetPrepareSet();
-    }
     public void resetPrepareSet() {
         PrepareCoffee prepare = er.findPrepare();
         prepare.setSugar(0);
@@ -126,10 +115,7 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void minusSugarSet(){
-        EspressorService prepareSugar = new EspressorService();
-        prepareSugar.minusSugar();
-    }
+
     public void plusSugar(){
         PrepareCoffee prepare =er.findPrepare();
         if(prepare.getSugar() < 5){
@@ -137,17 +123,10 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void plusSugarSet(){
-        EspressorService prepareSugar = new EspressorService();
-        prepareSugar.plusSugar();
-    }
+
     public String readSugarSet(){
         PrepareCoffee prepare =er.findPrepare();
         return String.valueOf(prepare.getSugar()) ;
-    }
-    public static String SugarSet() {
-        EspressorService showSugar = new EspressorService();
-        return showSugar.readSugarSet();
     }
     public void minusQuantity(){
         PrepareCoffee prepare = er.findPrepare();
@@ -156,10 +135,6 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void minusQuantitySet(){
-        EspressorService prepareQuantity = new EspressorService();
-        prepareQuantity.minusQuantity();
-    }
     public void plusQuantity(){
         PrepareCoffee prepare =er.findPrepare();
         if(prepare.getQuantity() < 200){
@@ -167,17 +142,9 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void plusQuantitySet(){
-        EspressorService prepareQuantity = new EspressorService();
-        prepareQuantity.plusQuantity();
-    }
     public String readQuantitySet(){
         PrepareCoffee prepare =er.findPrepare();
         return String.valueOf(prepare.getQuantity()) ;
-    }
-    public static String QuantitySet() {
-        EspressorService showQuantity = new EspressorService();
-        return showQuantity.readQuantitySet();
     }
     public void minusIntensity(){
         PrepareCoffee prepare = er.findPrepare();
@@ -186,10 +153,6 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void minusIntensitySet(){
-        EspressorService prepareIntensity = new EspressorService();
-        prepareIntensity.minusIntensity();
-    }
     public void plusIntensity(){
         PrepareCoffee prepare =er.findPrepare();
         if(prepare.getIntensity() < 3){
@@ -197,17 +160,9 @@ public class EspressorService {
             er.updatePrepare(prepare);
         }
     }
-    public static void plusIntensitySet(){
-        EspressorService prepareIntensity = new EspressorService();
-        prepareIntensity.plusIntensity();
-    }
     public String readIntensitySet(){
         PrepareCoffee prepare =er.findPrepare();
         return String.valueOf(prepare.getIntensity()) ;
-    }
-    public static String IntensitySet() {
-        EspressorService showIntensity = new EspressorService();
-        return showIntensity.readIntensitySet();
     }
     public Long FinalSelection() {
         PrepareCoffee prepare =er.findPrepare();

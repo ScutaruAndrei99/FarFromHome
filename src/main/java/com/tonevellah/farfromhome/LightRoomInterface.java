@@ -2,8 +2,6 @@ package com.tonevellah.farfromhome;
 
 import repository.LightRepository;
 import constructors.Light;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -55,69 +53,25 @@ public class LightRoomInterface implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        DBUtils db= new DBUtils();
 
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged");
-            }
-        });
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
 
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/interfaces/login.fxml","Login!");
-            }
-        });
+        button_logout.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml","Login!"));
 
-        button_bathroom.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                img_bathroom.setImage(ls.prepareBathroom());
-            }
-        });
+        button_bathroom.setOnAction(event -> img_bathroom.setImage(ls.prepareBathroom()));
 
-        button_bedroom.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_bedroom.setImage(ls.prepareBedroom());
-            }
-        });
+        button_bedroom.setOnAction(actionEvent -> img_bedroom.setImage(ls.prepareBedroom()));
 
-        button_kitchen.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_kitchen.setImage(ls.prepareKitchen());
-            }
-        });
+        button_kitchen.setOnAction(actionEvent -> img_kitchen.setImage(ls.prepareKitchen()));
 
-        button_hall.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_hall.setImage(ls.prepareHall());
-            }
-        });
+        button_hall.setOnAction(actionEvent -> img_hall.setImage(ls.prepareHall()));
 
-        button_livingroom.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_livingroom.setImage(ls.prepareLivingroom());
-            }
-        });
+        button_livingroom.setOnAction(actionEvent -> img_livingroom.setImage(ls.prepareLivingroom()));
 
-        button_dressing.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_dressing.setImage(ls.prepareDressing());
-            }
-        });
+        button_dressing.setOnAction(actionEvent -> img_dressing.setImage(ls.prepareDressing()));
 
-        button_boiler.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                img_boiler.setImage(ls.prepareBoiler());
-            }
-        });
+        button_boiler.setOnAction(actionEvent -> img_boiler.setImage(ls.prepareBoiler()));
     }
 
     Image myImg_bathroom, myImg_bedroom, myImg_kitchen, myImg_hall, myImg_livingroom, myImg_dressing, myImg_boiler;

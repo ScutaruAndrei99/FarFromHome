@@ -28,4 +28,7 @@ public class TVService {
         String channel=show.Channel1();
         return channel;
     }
+//    public String ChannelSelected(String SelectedOption){
+//
+//    }
 }

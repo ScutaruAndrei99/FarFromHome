@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import repository.SqlConfig;
 import service.CentralService;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
 
@@ -18,54 +17,55 @@ import java.sql.*;
 public class DBUtils {
 
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String title) {
-        Parent root=null;
-            try{
-                FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
-                root = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public void changeScene(ActionEvent event, String fxmlFile, String title) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    public static void lightScene(ActionEvent event, String fxmlFile) {
-        Parent root=null;
-        try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+    public void lightScene(ActionEvent event, String fxmlFile) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             root = loader.load();
-            LightRoomInterface lightroom=loader.getController();
+            LightRoomInterface lightroom = loader.getController();
             lightroom.setPower();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Light");
         stage.setScene(new Scene(root));
         stage.show();
     }
-    public static void gateScene(ActionEvent event, String fxmlFile) {
-        Parent root=null;
-        try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+    public void gateScene(ActionEvent event, String fxmlFile) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             root = loader.load();
-            GateInterface gate=loader.getController();
+            GateInterface gate = loader.getController();
             gate.setPower();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Gate");
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-    public static void TVScene(ActionEvent event, String fxmlFile) {
+    public void TVScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -79,7 +79,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void EspressorScene(ActionEvent event, String fxmlFile) {
+    public void EspressorScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -92,7 +92,7 @@ public class DBUtils {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    public static void ExpressorPrepareCoffee(ActionEvent event, String fxmlFile){
+    public void ExpressorPrepareCoffee(ActionEvent event, String fxmlFile){
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -106,7 +106,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void CentralScene(ActionEvent event, String fxmlFile) {
+    public void CentralScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -124,7 +124,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void ElevatorScene(ActionEvent event, String fxmlFile) {
+    public void ElevatorScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -138,7 +138,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void CurtainsScene(ActionEvent event, String fxmlFile) {
+    public void CurtainsScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -152,7 +152,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void VacuumScene(ActionEvent event, String fxmlFile) {
+    public void VacuumScene(ActionEvent event, String fxmlFile) {
         Parent root=null;
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -166,7 +166,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void registerUser(ActionEvent event, String username, String first_name, String last_name, String password, String email) {
+    public void registerUser(ActionEvent event, String username, String first_name, String last_name, String password, String email) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
@@ -178,11 +178,11 @@ public class DBUtils {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = SqlConfig.getDataBaseConnectionAccount();
             psCheckUserExists = connection.prepareStatement("SELECT username FROM accounts WHERE username = ?");
-            psCheckUserExists.setString(1,username);
+            psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
 
             psCheckEmailExist = connection.prepareStatement("SELECT email FROM accounts WHERE email = ?");
-            psCheckEmailExist.setString(1,email);
+            psCheckEmailExist.setString(1, email);
             rs = psCheckEmailExist.executeQuery();
 
             if (resultSet.isBeforeFirst()) {
@@ -197,16 +197,16 @@ public class DBUtils {
                 alert.show();
             } else {
                 psInsert = connection.prepareStatement("INSERT INTO accounts (username, first_name, last_name, password, email) VALUES (?,?,?,?,?)");
-                psInsert.setString(1,username);
-                psInsert.setString(2,first_name);
-                psInsert.setString(3,last_name);
-                psInsert.setString(4,password);
-                psInsert.setString(5,email);
+                psInsert.setString(1, username);
+                psInsert.setString(2, first_name);
+                psInsert.setString(3, last_name);
+                psInsert.setString(4, password);
+                psInsert.setString(5, email);
                 psInsert.executeUpdate();
 
                 changeScene(event, "/interfaces/logged-in.fxml", "Welcome!");
             }
-        } catch(ClassNotFoundException | SQLException exception) {
+        } catch (ClassNotFoundException | SQLException exception) {
             System.out.println("Repository-ul nu a putut fi initializat");
             exception.printStackTrace();
         } finally {
@@ -241,7 +241,7 @@ public class DBUtils {
         }
     }
 
-    public static void loginUser(ActionEvent event, String username, String password) {
+    public void loginUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement =null ;
         ResultSet resultSet = null;

@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -36,37 +34,33 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_sign_upR.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (!tf_usernameR.getText().trim().isEmpty() && !tf_firstNameR.getText().trim().isEmpty() && !tf_lastNameR.getText().trim().isEmpty() && !pf_passwordR.getText().trim().isEmpty() && !pf_retypePasswordR.getText().trim().isEmpty() && !tf_emailR.getText().trim().isEmpty() && !tf_retypeEmailR.getText().trim().isEmpty()) {
-                    if (!pf_passwordR.getText().equals(pf_retypePasswordR.getText())) {
-                        System.out.println("Check to write the same password");
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Check to write the same password");
-                        alert.show();
-                    } else if (!tf_emailR.getText().equals(tf_retypeEmailR.getText())){
-                        System.out.println("Check to write the same email");
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Check to write the same email");
-                        alert.show();
-                    } else {
-                        DBUtils.registerUser(event, tf_usernameR.getText(),tf_firstNameR.getText(), tf_lastNameR.getText(), pf_passwordR.getText(), tf_emailR.getText());
-                    }
-                } else {
-                    System.out.println("Please fill in all information");
+
+        DBUtils db = new DBUtils();
+
+        button_sign_upR.setOnAction(event -> {
+            if (!tf_usernameR.getText().trim().isEmpty() && !tf_firstNameR.getText().trim().isEmpty() && !tf_lastNameR.getText().trim().isEmpty() && !pf_passwordR.getText().trim().isEmpty() && !pf_retypePasswordR.getText().trim().isEmpty() && !tf_emailR.getText().trim().isEmpty() && !tf_retypeEmailR.getText().trim().isEmpty()) {
+                if (!pf_passwordR.getText().equals(pf_retypePasswordR.getText())) {
+                    System.out.println("Check to write the same password");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in all information to sing up!");
+                    alert.setContentText("Check to write the same password");
                     alert.show();
+                } else if (!tf_emailR.getText().equals(tf_retypeEmailR.getText())){
+                    System.out.println("Check to write the same email");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Check to write the same email");
+                    alert.show();
+                } else {
+                    db.registerUser(event, tf_usernameR.getText(),tf_firstNameR.getText(), tf_lastNameR.getText(), pf_passwordR.getText(), tf_emailR.getText());
                 }
+            } else {
+                System.out.println("Please fill in all information");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please fill in all information to sing up!");
+                alert.show();
             }
         });
-        button_loginR.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/interfaces/login.fxml", "Login!");
-            }
-        });
+
+        button_loginR.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml", "Login!"));
     }
 
 }

@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,17 +15,11 @@ public class CurtainsInterfaces implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged");
-            }
-        });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/login.fxml", "Login!");
-            }
-        });
+
+        DBUtils db = new DBUtils();
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+
     }
 }

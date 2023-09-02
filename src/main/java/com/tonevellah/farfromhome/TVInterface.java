@@ -1,12 +1,9 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import repository.TVRepository;
 import service.TVService;
 
 import java.net.URL;
@@ -24,28 +21,23 @@ public class TVInterface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged");
-            }
-        });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/login.fxml", "Login!");
-            }
-        });
 
-        button_power.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        DBUtils db = new DBUtils();
 
-            }
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+
+        button_power.setOnAction(actionEvent -> {
+
         });
         choiceBoxChannel.getStylesheets().add("/cssStyle/BoxSizeChannel.css");
         choiceBoxChannel.setValue(TVService.Channel());
         choiceBoxChannel.getItems().addAll(TVService.TVChannelPrint());
+        choiceBoxChannel.setOnAction(actionEvent -> {
+            String selectedOption = choiceBoxChannel.getValue();
+//            TVService.ChannelSelected(selectedOption);
+        });
 
     }
 }

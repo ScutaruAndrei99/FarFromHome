@@ -7,19 +7,6 @@ import constructors.Central;
 public class CentralService {
     CentralRepository cr;
     public CentralService () { cr = new CentralRepository(); }
-    public static void up(){
-        CentralService up = new CentralService();
-        up.upTemperature();
-    }
-    public static void down(){
-        CentralService down =new CentralService();
-        down.downTemperature();
-    }
-    public static String temperatureSet(){
-        CentralService temperatureSet = new CentralService();
-        String temperature = (temperatureSet.readTemperature()) +" °C";
-        return temperature;
-    }
 
     public void upTemperature() {
         Central central = cr.findById(2);
@@ -43,9 +30,10 @@ public class CentralService {
         cr.updateCentral(central);
     }
 
-    public float readTemperature() {
+    public String readTemperature() {
         Central central = cr.findById(2);
-        return central.getTemperature();
+        String temperature = central.getTemperature() +" °C";
+        return temperature;
     }
 
 }

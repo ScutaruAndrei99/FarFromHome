@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,31 +27,22 @@ public class CentralInterface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged");
-            }
+
+        DBUtils db = new DBUtils();
+        CentralService cs = new CentralService();
+
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+
+        button_upTemperature.setOnAction(event -> {
+            cs.upTemperature();
+            text_temperatureSet.setText(cs.readTemperature());
         });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/login.fxml", "Login!");
-            }
-        });
-        button_upTemperature.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                CentralService.up();
-                text_temperatureSet.setText(CentralService.temperatureSet());
-            }
-        });
-        button_downTemperature.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                CentralService.down();
-                text_temperatureSet.setText(CentralService.temperatureSet());
-            }
+
+        button_downTemperature.setOnAction(event -> {
+            cs.downTemperature();
+            text_temperatureSet.setText(cs.readTemperature());
         });
     }
 }

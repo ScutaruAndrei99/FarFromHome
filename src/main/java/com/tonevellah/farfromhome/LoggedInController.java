@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,66 +33,28 @@ public class LoggedInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged");
-            }
-        });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "/interfaces/login.fxml","Login!");
-            }
-        });
-        button_light.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.lightScene(actionEvent,"/interfaces/lightRoom.fxml");
-            }
-        });
-        button_gate.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.gateScene(actionEvent,"/interfaces/gate.fxml");
-            }
-        });
-        button_TV.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.TVScene(event,"/interfaces/tv.fxml");
-            }
-        });
-        button_coffee.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.EspressorScene(event,"/interfaces/espressor.fxml");
-            }
-        });
-        button_central.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.CentralScene(event,"/interfaces/central.fxml");
-            }
-        });
-        button_elevator.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.ElevatorScene(event,"/interfaces/elevator.fxml");
-            }
-        });
-        button_curtain.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.CurtainsScene(event,"/interfaces/curtains.fxml");
-            }
-        });
-        button_vacuum.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.VacuumScene(event,"/interfaces/vacuum.fxml");
-            }
-        });
+        DBUtils db = new DBUtils();
+
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
+
+        button_logout.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml","Login!"));
+
+        button_light.setOnAction(actionEvent -> db.lightScene(actionEvent,"/interfaces/lightRoom.fxml"));
+
+        button_gate.setOnAction(actionEvent -> db.gateScene(actionEvent,"/interfaces/gate.fxml"));
+
+        button_TV.setOnAction(event -> db.TVScene(event,"/interfaces/tv.fxml"));
+
+        button_coffee.setOnAction(event -> db.EspressorScene(event,"/interfaces/espressor.fxml"));
+
+        button_central.setOnAction(event -> db.CentralScene(event,"/interfaces/central.fxml"));
+
+        button_elevator.setOnAction(event -> db.ElevatorScene(event,"/interfaces/elevator.fxml"));
+
+        button_curtain.setOnAction(event -> db.CurtainsScene(event,"/interfaces/curtains.fxml"));
+
+        button_vacuum.setOnAction(event -> db.VacuumScene(event,"/interfaces/vacuum.fxml"));
+
     }
 
 }

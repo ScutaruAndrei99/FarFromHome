@@ -1,7 +1,5 @@
 package com.tonevellah.farfromhome;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,38 +22,28 @@ public class EspressorInterface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        button_home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged");
-            }
+
+        DBUtils db = new DBUtils();
+        EspressorService es = new EspressorService();
+
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+
+        button_espressor.setOnAction(event -> {
+            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            es.typeCoffeeSelect("espresso");
         });
-        button_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "/interfaces/login.fxml", "Login!");
-            }
+
+        button_cappuccino.setOnAction(event -> {
+            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            es.typeCoffeeSelect("cappuccino");
         });
-        button_espressor.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
-                EspressorService.typeCoffeeChosen("espresso");
-            }
+
+        button_latte.setOnAction(event -> {
+            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            es.typeCoffeeSelect("latte");
         });
-        button_cappuccino.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
-                EspressorService.typeCoffeeChosen("cappuccino");
-            }
-        });
-        button_latte.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBUtils.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
-                EspressorService.typeCoffeeChosen("latte");
-            }
-        });
+
     }
 }

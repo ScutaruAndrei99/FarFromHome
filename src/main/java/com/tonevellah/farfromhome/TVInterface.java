@@ -23,6 +23,7 @@ public class TVInterface implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         DBUtils db = new DBUtils();
+        TVService ts = new TVService();
 
         button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
 
@@ -32,8 +33,8 @@ public class TVInterface implements Initializable {
 
         });
         choiceBoxChannel.getStylesheets().add("/cssStyle/BoxSizeChannel.css");
-        choiceBoxChannel.setValue(TVService.Channel());
-        choiceBoxChannel.getItems().addAll(TVService.TVChannelPrint());
+        choiceBoxChannel.setValue(ts.Channel());
+        choiceBoxChannel.getItems().addAll(ts.TVChannelShow());
         choiceBoxChannel.setOnAction(actionEvent -> {
             String selectedOption = choiceBoxChannel.getValue();
 //            TVService.ChannelSelected(selectedOption);

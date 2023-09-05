@@ -1,5 +1,6 @@
 package service;
 
+import constructors.Television;
 import repository.TVRepository;
 
 import java.util.List;
@@ -18,7 +19,10 @@ public class TVService {
         String channel = tr.Channel();
         return channel;
     }
-//    public String ChannelSelected(String SelectedOption){
-//
-//    }
+    public void ChannelSelected(String SelectedOption){
+        tr.WhatChannelPostIs(SelectedOption);
+        Television tv= tr.TVStatus();
+        tv.setChannelName(SelectedOption);
+        tr.updateChannel(tv);
+    }
 }

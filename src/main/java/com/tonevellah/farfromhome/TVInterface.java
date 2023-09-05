@@ -1,9 +1,11 @@
 package com.tonevellah.farfromhome;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import service.TVService;
 
 import java.net.URL;
@@ -15,9 +17,9 @@ public class TVInterface implements Initializable {
     @FXML
     private Button button_home;
     @FXML
-    private ChoiceBox<String> choiceBoxChannel;
-    @FXML
     private Button button_power;
+    @FXML
+    private ComboBox<String> comboBoxChannel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,13 +34,12 @@ public class TVInterface implements Initializable {
         button_power.setOnAction(actionEvent -> {
 
         });
-        choiceBoxChannel.getStylesheets().add("/cssStyle/BoxSizeChannel.css");
-        choiceBoxChannel.setValue(ts.Channel());
-        choiceBoxChannel.getItems().addAll(ts.TVChannelShow());
-        choiceBoxChannel.setOnAction(actionEvent -> {
-            String selectedOption = choiceBoxChannel.getValue();
-//            TVService.ChannelSelected(selectedOption);
-        });
+        comboBoxChannel.getStylesheets().add("/cssStyle/BoxSizeChannel.css");
+        comboBoxChannel.getItems().addAll(ts.TVChannelShow());
+        comboBoxChannel.setValue(ts.Channel());
+        comboBoxChannel.setOnMouseClicked(event -> comboBoxChannel.show());
+        comboBoxChannel.setOnAction(actionEvent ->  ts.ChannelSelected(comboBoxChannel.getValue()));
+
 
     }
 }

@@ -46,5 +46,6 @@ public class GateService {
             gate.setStatus(false);
             gr.update(gate);
         }
+
     }
 }

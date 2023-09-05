@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -44,7 +45,10 @@
                      </graphic>
                   </Button>
                   <Circle fx:id="cercel_status" fill="DODGERBLUE" layoutX="341.0" layoutY="112.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                  <ChoiceBox fx:id="choiceBoxChannel" accessibleRole="CONTEXT_MENU" layoutX="20.0" layoutY="180.0" prefWidth="150.0" />
+                  <ComboBox fx:id="comboBoxChannel" layoutX="164.0" layoutY="174.0" prefWidth="150.0" visibleRowCount="5">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></ComboBox>
                     </children></AnchorPane>
             </content>
         </ScrollPane>

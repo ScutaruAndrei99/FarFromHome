@@ -1,10 +1,18 @@
-.choice-box {
+.combo-box {
+    -fx-border-color: #ACACAC; /* Păstrați doar culoarea bordurii */
+    -fx-background-radius: 60px; /* Stil pentru marginea rotunjită */
+    -fx-font-size: 15px;
+    -fx-padding: 0px;
+    -fx-font-weight: 700;
+    -fx-font-family: 'Open Sans','Helvetica Neue','Arial','sans-serif';
     -fx-translate-y: -20px; /* Muta lista pe axa y */
+    -fx-pref-width: 150px;
 }
 
-.choice-box .context-menu {
-    -fx-pref-width: 200px; /* Lățimea listei derulante */
-    -fx-pref-height: 150px; /* Înălțimea listei derulante */
+
+
+.combo-box .context-menu {
+    -fx-padding:0px;
     -fx-border-color: black;
     -fx-border-width: 2px;
 }

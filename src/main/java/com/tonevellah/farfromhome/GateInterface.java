@@ -25,8 +25,8 @@ public class GateInterface implements Initializable {
     private Button button_switch;
     @FXML
     public ImageView img_switch;
-    @FXML
-    private ImageView img_videocam;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

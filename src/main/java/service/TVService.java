@@ -20,8 +20,8 @@ public class TVService {
         return channel;
     }
     public void SelectedChannel(String SelectedOption){
-        tr.WhatChannelPostIs(SelectedOption);
         Television tv= tr.TVStatus();
+        tv.setChannelPost(tr.WhatChannelPostIs(SelectedOption));
         tv.setChannelName(SelectedOption);
         tr.UpdateTV(tv);
     }
@@ -39,5 +39,6 @@ public class TVService {
     public boolean PowerStatus(){
         Television tv = tr.TVStatus();
         return tv.isPower();
+
     }
 }

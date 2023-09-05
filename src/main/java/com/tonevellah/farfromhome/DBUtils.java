@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import repository.SqlConfig;
 import service.CentralService;
+import service.TVService;
 
 import java.io.IOException;
 import java.sql.*;
@@ -70,6 +71,9 @@ public class DBUtils {
         try{
             FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
             root = loader.load();
+            TVInterface tv =loader.getController();
+            TVService ts = new TVService();
+            tv.PowerPrepare(ts.PowerStatus());
         } catch (IOException e){
             e.printStackTrace();
         }

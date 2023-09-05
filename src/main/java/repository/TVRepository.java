@@ -62,7 +62,7 @@ public class TVRepository {
         }
     }
 
-    public boolean updateChannel(Television tv){
+    public boolean UpdateTV(Television tv){
         try{PreparedStatement statement = connection.prepareStatement("UPDATE television SET ChannelPost = ?, ChannelName = ?, Power = ? WHERE idTV = 3");
             statement.setInt(1, tv.getChannelPost());
             statement.setString(2, tv.getChannelName());

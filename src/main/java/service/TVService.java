@@ -19,10 +19,25 @@ public class TVService {
         String channel = tr.Channel();
         return channel;
     }
-    public void ChannelSelected(String SelectedOption){
+    public void SelectedChannel(String SelectedOption){
         tr.WhatChannelPostIs(SelectedOption);
         Television tv= tr.TVStatus();
         tv.setChannelName(SelectedOption);
-        tr.updateChannel(tv);
+        tr.UpdateTV(tv);
+    }
+
+    public void PressButtonPower(){
+        Television tv = tr.TVStatus();
+        if (tv.isPower()==true) {
+            tv.setPower(false);
+            tr.UpdateTV(tv);
+        } else {
+            tv.setPower(true);
+            tr.UpdateTV(tv);
+        }
+    }
+    public boolean PowerStatus(){
+        Television tv = tr.TVStatus();
+        return tv.isPower();
     }
 }

@@ -29,9 +29,11 @@ public class TVInterface implements Initializable {
         DBUtils db = new DBUtils();
         TVService ts = new TVService();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",
+                "Welcome!"));
 
-        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml",
+                "Login!"));
 
         button_power.setOnAction(actionEvent -> {
             ts.PressButtonPower();
@@ -48,7 +50,7 @@ public class TVInterface implements Initializable {
         comboBoxChannel.setOnAction(actionEvent ->  ts.SelectedChannel(comboBoxChannel.getValue()));
 
     }
-    public void PowerPrepare(boolean value) {
+    public void powerPrepare(boolean value) {
         if (value==true) {
             circle_status.setFill(Color.GREEN);
         } else {

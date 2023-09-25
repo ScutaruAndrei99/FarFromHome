@@ -1,7 +1,7 @@
 package com.tonevellah.farfromhome;
 
 import repository.LightRepository;
-import constructors.Light;
+import model.Light;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -55,7 +55,8 @@ public class LightRoomInterface implements Initializable {
 
         DBUtils db= new DBUtils();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml",
+                "Welcome!"));
 
         button_logout.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml","Login!"));
 

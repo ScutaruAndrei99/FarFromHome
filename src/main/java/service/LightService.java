@@ -1,6 +1,6 @@
 package service;
 
-import constructors.Light;
+import model.Light;
 import javafx.scene.image.Image;
 import repository.LightRepository;
 

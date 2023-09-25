@@ -26,22 +26,24 @@ public class EspressorInterface implements Initializable {
         DBUtils db = new DBUtils();
         EspressorService es = new EspressorService();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",
+                "Welcome!"));
 
-        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml",
+                "Login!"));
 
         button_espressor.setOnAction(event -> {
-            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            db.expressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
             es.typeCoffeeSelect("espresso");
         });
 
         button_cappuccino.setOnAction(event -> {
-            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            db.expressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
             es.typeCoffeeSelect("cappuccino");
         });
 
         button_latte.setOnAction(event -> {
-            db.ExpressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
+            db.expressorPrepareCoffee(event,"/interfaces/prepareCoffee.fxml");
             es.typeCoffeeSelect("latte");
         });
 

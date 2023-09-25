@@ -1,6 +1,6 @@
 package service;
 
-import constructors.Television;
+import model.Television;
 import repository.TVRepository;
 
 import java.util.List;
@@ -11,33 +11,33 @@ public class TVService {
     public TVService() { tr = new TVRepository();}
 
     public List<String> TVChannelShow(){
-        List<String> TVChannel = tr.TVlist();
+        List<String> TVChannel = tr.tvList();
         return TVChannel;
     }
 
     public String Channel() {
-        String channel = tr.Channel();
+        String channel = tr.channel();
         return channel;
     }
     public void SelectedChannel(String SelectedOption){
-        Television tv= tr.TVStatus();
-        tv.setChannelPost(tr.WhatChannelPostIs(SelectedOption));
+        Television tv= tr.tvStatus();
+        tv.setChannelPost(tr.whatChannelPostIs(SelectedOption));
         tv.setChannelName(SelectedOption);
-        tr.UpdateTV(tv);
+        tr.updateTV(tv);
     }
 
     public void PressButtonPower(){
-        Television tv = tr.TVStatus();
+        Television tv = tr.tvStatus();
         if (tv.isPower()==true) {
             tv.setPower(false);
-            tr.UpdateTV(tv);
+            tr.updateTV(tv);
         } else {
             tv.setPower(true);
-            tr.UpdateTV(tv);
+            tr.updateTV(tv);
         }
     }
     public boolean PowerStatus(){
-        Television tv = tr.TVStatus();
+        Television tv = tr.tvStatus();
         return tv.isPower();
 
     }

@@ -1,4 +1,4 @@
-package constructors;
+package model;
 
 public class Gate {
     private boolean open;

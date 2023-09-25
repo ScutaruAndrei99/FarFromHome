@@ -1,6 +1,6 @@
 package com.tonevellah.farfromhome;
 
-import constructors.Gate;
+import model.Gate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import repository.GateRepository;
@@ -33,16 +33,17 @@ public class GateInterface implements Initializable {
 
         DBUtils db = new DBUtils();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml",
+                "Welcome!"));
 
-        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml","Login!"));
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml",
+                "Login!"));
 
         button_switch.setOnAction(actionEvent -> img_switch.setImage(gs.prepareImage()));
 
     }
         Image myImg_switch;
     public void setPower(){
-        System.out.println(gate.isOpen());
         if(gate.isOpen()){
             myImg_switch=new Image(getClass().getResourceAsStream("/images/switch_on.png"));
         } else {

@@ -1,4 +1,4 @@
-package constructors;
+package model;
 
 public class Television {
     private int idTV;

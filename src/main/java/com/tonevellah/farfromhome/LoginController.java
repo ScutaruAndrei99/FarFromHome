@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import service.UserService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,14 +25,17 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         DBUtils db= new DBUtils();
+        UserService us = new UserService();
 
         button_login.setOnAction(event -> {
+            if(us.checkMatchAccount(tf_username.getText(),pf_password.getText())) {
+                db.changeScene(event, "/interfaces/logged-in.fxml", "Logged");
+            }
 
-            db.loginUser(event, tf_username.getText(), pf_password.getText());
-            db.changeScene(event, "/interfaces/logged-in.fxml","Logged");
         });
 
-        button_sign_up.setOnAction(event -> db.changeScene(event, "/interfaces/register.fxml", "Register your account"));
+        button_sign_up.setOnAction(event -> db.changeScene(event, "/interfaces/register.fxml",
+                "Register your account"));
 
     }
 }

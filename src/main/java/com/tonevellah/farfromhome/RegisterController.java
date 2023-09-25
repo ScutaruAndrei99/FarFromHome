@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import service.UserService;
 
 
 import java.net.URL;
@@ -36,9 +37,13 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         DBUtils db = new DBUtils();
+        UserService us=new UserService();
 
         button_sign_upR.setOnAction(event -> {
-            if (!tf_usernameR.getText().trim().isEmpty() && !tf_firstNameR.getText().trim().isEmpty() && !tf_lastNameR.getText().trim().isEmpty() && !pf_passwordR.getText().trim().isEmpty() && !pf_retypePasswordR.getText().trim().isEmpty() && !tf_emailR.getText().trim().isEmpty() && !tf_retypeEmailR.getText().trim().isEmpty()) {
+            if (!tf_usernameR.getText().trim().isEmpty() && !tf_firstNameR.getText().trim().isEmpty()
+                    && !tf_lastNameR.getText().trim().isEmpty() && !pf_passwordR.getText().trim().isEmpty()
+                    && !pf_retypePasswordR.getText().trim().isEmpty() && !tf_emailR.getText().trim().isEmpty()
+                    && !tf_retypeEmailR.getText().trim().isEmpty()) {
                 if (!pf_passwordR.getText().equals(pf_retypePasswordR.getText())) {
                     System.out.println("Check to write the same password");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -50,13 +55,13 @@ public class RegisterController implements Initializable {
                     alert.setContentText("Check to write the same email");
                     alert.show();
                 } else {
-                    db.registerUser(event, tf_usernameR.getText(),tf_firstNameR.getText(), tf_lastNameR.getText(), pf_passwordR.getText(), tf_emailR.getText());
+                    if (!us.checkUsernameValability(tf_usernameR.getText())  &&
+                            !us.checkEmailValability(tf_emailR.getText())) {
+                        us.createAccount(tf_usernameR.getText(), tf_firstNameR.getText(), tf_lastNameR.getText(),
+                                pf_passwordR.getText(), tf_emailR.getText());
+                        db.registerUser(event);
+                    }
                 }
-            } else {
-                System.out.println("Please fill in all information");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Please fill in all information to sing up!");
-                alert.show();
             }
         });
 

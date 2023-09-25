@@ -1,6 +1,6 @@
 package repository;
 
-import constructors.Television;
+import model.Television;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,10 +11,10 @@ import java.util.List;
 
 public class TVRepository {
     public TVRepository() {SqlConfig.getDataBaseConnection();}
-    private Connection connection=SqlConfig.getDataBaseConnection();
 
 
-    public List<String> TVlist() {
+    public List<String> tvList() {
+        Connection connection = SqlConfig.getDataBaseConnection();
         try {
             List<String> TVlist = new ArrayList<>();
             PreparedStatement statement = connection.prepareStatement("SELECT ChannelName1 FROM channel");
@@ -22,13 +22,15 @@ public class TVRepository {
             while (rs.next()) {
                 TVlist.add(rs.getString("ChannelName1"));
             }
+            SqlConfig.closeDataBaseConnection();
             return TVlist;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
         }
     }
-    public Television TVStatus(){
+    public Television tvStatus(){
+        Connection connection = SqlConfig.getDataBaseConnection();
         try{
             Television tv = null;
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM television");
@@ -41,13 +43,15 @@ public class TVRepository {
                     rs.getBoolean("Power")
                 );
             }
+            SqlConfig.closeDataBaseConnection();
             return tv;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
         }
     }
-    public String Channel(){
+    public String channel(){
+        Connection connection = SqlConfig.getDataBaseConnection();
         try{
             String channel = null;
             PreparedStatement statement = connection.prepareStatement("SELECT ChannelName FROM television");
@@ -55,6 +59,7 @@ public class TVRepository {
             while (rs.next()) {
                 channel= rs.getString("ChannelName");
             }
+            SqlConfig.closeDataBaseConnection();
             return channel;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
@@ -62,13 +67,16 @@ public class TVRepository {
         }
     }
 
-    public boolean UpdateTV(Television tv){
-        try{PreparedStatement statement = connection.prepareStatement("UPDATE television SET ChannelPost = ?, ChannelName = ?, Power = ? WHERE idTV = 3");
+    public boolean updateTV(Television tv){
+        Connection connection = SqlConfig.getDataBaseConnection();
+        try{PreparedStatement statement = connection.prepareStatement(
+                "UPDATE television SET ChannelPost = ?, ChannelName = ?, Power = ? WHERE idTV = 3");
             statement.setInt(1, tv.getChannelPost());
             statement.setString(2, tv.getChannelName());
             statement.setBoolean(3, tv.isPower());
 
             int affectedRows = statement.executeUpdate();
+            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
@@ -77,18 +85,22 @@ public class TVRepository {
 
     }
 
-    public int WhatChannelPostIs(String ChannelName){
+    public int whatChannelPostIs(String ChannelName){
+        Connection connection = SqlConfig.getDataBaseConnection();
         try{
-            PreparedStatement statement = connection.prepareStatement("SELECT ChannelPost1 FROM channel WHERE ChannelName1 = ?");
+            PreparedStatement statement = connection.prepareStatement(
+                    "SELECT ChannelPost1 FROM channel WHERE ChannelName1 = ?");
 
             statement.setString(1,ChannelName); //Seteaza valoarea parametrului
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
                 int post = rs.getInt("ChannelPost1"); // Extrage valoarea coloanei "ChannelPost1"
+                SqlConfig.closeDataBaseConnection();
                 return post;
             } else {
                 System.out.println("Nu a fost gasit niciun rand care sa corespunda criteriilor");
+                SqlConfig.closeDataBaseConnection();
                 return -1;
             }
         } catch (SQLException e) {

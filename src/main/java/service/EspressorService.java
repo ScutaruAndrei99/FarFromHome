@@ -1,7 +1,7 @@
 package service;
 
-import constructors.Espressor;
-import constructors.PrepareCoffee;
+import model.Espressor;
+import model.PrepareCoffee;
 import javafx.scene.control.Alert;
 import repository.EspressorRepository;
 

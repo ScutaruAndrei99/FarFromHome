@@ -1,6 +1,6 @@
 package repository;
 
-import constructors.Light;
+import model.Light;
 
 import java.sql.*;
 
@@ -30,6 +30,7 @@ public class LightRepository {
                         rs.getBoolean("Boiler")
                 );
             }
+            SqlConfig.closeDataBaseConnection();
             return light;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
@@ -38,7 +39,8 @@ public class LightRepository {
     }
     public boolean updateLight(Light light) {
         Connection connection = SqlConfig.getDataBaseConnection();
-        String sql= "UPDATE light SET Bathroom = ?, Bedroom = ?, Kitchen = ?, Hall = ?, LivingRoom = ?, Dressing = ?, Boiler = ? WHERE idLight = 4";
+        String sql= "UPDATE light SET Bathroom = ?, Bedroom = ?, Kitchen = ?, Hall = ?, LivingRoom = ?," +
+                " Dressing = ?, Boiler = ? WHERE idLight = 4";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setBoolean(1, light.isBathroom());
@@ -49,8 +51,10 @@ public class LightRepository {
             statement.setBoolean(6, light.isDressing());
             statement.setBoolean(7, light.isBoiler());
             int affectedRows = statement.executeUpdate();
+            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
+            System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
         }
     }

@@ -17,9 +17,11 @@ public class CurtainsInterfaces implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         DBUtils db = new DBUtils();
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",
+                "Welcome!"));
 
-        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml",
+                "Login!"));
 
     }
 }

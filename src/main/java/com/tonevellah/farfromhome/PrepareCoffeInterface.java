@@ -39,7 +39,7 @@ public class PrepareCoffeInterface implements Initializable {
         EspressorService es = new EspressorService();
 
         button_back.setOnAction(event -> {
-            db.EspressorScene(event,"/interfaces/espressor.fxml");
+            db.espressorScene(event,"/interfaces/espressor.fxml");
             es.resetPrepareSet();
         });
 
@@ -76,7 +76,7 @@ public class PrepareCoffeInterface implements Initializable {
         button_start.setOnAction(event -> {
             es.prepareCoffee();
             es.resetPrepareSet();
-            db.EspressorScene(event,"/interfaces/espressor.fxml");
+            db.espressorScene(event,"/interfaces/espressor.fxml");
         });
     }
 }

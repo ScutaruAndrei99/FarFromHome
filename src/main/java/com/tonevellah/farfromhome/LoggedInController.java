@@ -35,7 +35,8 @@ public class LoggedInController implements Initializable {
 
         DBUtils db = new DBUtils();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml","Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml",
+                "Welcome!"));
 
         button_logout.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml","Login!"));
 
@@ -43,17 +44,17 @@ public class LoggedInController implements Initializable {
 
         button_gate.setOnAction(actionEvent -> db.gateScene(actionEvent,"/interfaces/gate.fxml"));
 
-        button_TV.setOnAction(event -> db.TVScene(event,"/interfaces/tv.fxml"));
+        button_TV.setOnAction(event -> db.tvScene(event,"/interfaces/tv.fxml"));
 
-        button_coffee.setOnAction(event -> db.EspressorScene(event,"/interfaces/espressor.fxml"));
+        button_coffee.setOnAction(event -> db.espressorScene(event,"/interfaces/espressor.fxml"));
 
-        button_central.setOnAction(event -> db.CentralScene(event,"/interfaces/central.fxml"));
+        button_central.setOnAction(event -> db.centralScene(event,"/interfaces/central.fxml"));
 
-        button_elevator.setOnAction(event -> db.ElevatorScene(event,"/interfaces/elevator.fxml"));
+        button_elevator.setOnAction(event -> db.elevatorScene(event,"/interfaces/elevator.fxml"));
 
-        button_curtain.setOnAction(event -> db.CurtainsScene(event,"/interfaces/curtains.fxml"));
+        button_curtain.setOnAction(event -> db.curtainsScene(event,"/interfaces/curtains.fxml"));
 
-        button_vacuum.setOnAction(event -> db.VacuumScene(event,"/interfaces/vacuum.fxml"));
+        button_vacuum.setOnAction(event -> db.vacuumScene(event,"/interfaces/vacuum.fxml"));
 
     }
 

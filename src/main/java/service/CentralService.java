@@ -2,7 +2,7 @@ package service;
 
 import repository.CentralRepository;
 
-import constructors.Central;
+import model.Central;
 
 public class CentralService {
     CentralRepository cr;

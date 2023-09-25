@@ -1,0 +1,17 @@
+.cerc-button {
+    -fx-background-color: transparent; /* Setează culoarea de fundal a butonului ca transparentă */
+    -fx-background-radius: 50%; /* Creează un buton cu colțuri rotunjite pentru a forma un cerc */
+    -fx-min-width: 100px; /* Lățimea minimă a butonului */
+    -fx-min-height: 100px; /* Înălțimea minimă a butonului */
+    -fx-max-width: 100px; /* Lățimea maximă a butonului */
+    -fx-max-height: 100px; /* Înălțimea maximă a butonului */
+    -fx-border-radius: 50%; /* Rotunjește colțurile conturului butonului */
+    -fx-border-width: 2px; /* Lățimea conturului butonului */
+    -fx-border-color: #007bff; /* Culoarea conturului butonului */
+    -fx-cursor: hand; /* Indicator de cursor la interacțiune */
+}
+
+.cerc-button:hover {
+    -fx-background-color: #007bff; /* Culoarea de fundal a butonului la hover */
+    -fx-text-fill: white; /* Culoarea textului la hover */
+}

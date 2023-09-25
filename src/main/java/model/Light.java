@@ -1,16 +1,11 @@
-package constructors;
+package model;
 
 public class Light {
         private int idLight;
-        private boolean bathroom;
-        private boolean bedroom;
-        private boolean kitchen;
-        private boolean hall;
-        private boolean livingRoom;
-        private boolean dressing;
-        private boolean boiler;
+        private boolean bathroom, bedroom, kitchen, hall, livingRoom, dressing, boiler;
 
-        public Light(int idLight, boolean bathroom, boolean bedroom, boolean kitchen, boolean hall, boolean livingRoom, boolean dressing, boolean boiler){
+        public Light(int idLight, boolean bathroom, boolean bedroom, boolean kitchen, boolean hall,
+                     boolean livingRoom, boolean dressing, boolean boiler){
             this.idLight = idLight;
             this.bathroom = bathroom;
             this.bedroom = bedroom;

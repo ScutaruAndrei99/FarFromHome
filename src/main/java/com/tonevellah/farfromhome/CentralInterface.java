@@ -31,9 +31,11 @@ public class CentralInterface implements Initializable {
         DBUtils db = new DBUtils();
         CentralService cs = new CentralService();
 
-        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml", "Logged"));
+        button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",
+                "Welcome!"));
 
-        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml", "Login!"));
+        button_logout.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/login.fxml",
+                "Login!"));
 
         button_upTemperature.setOnAction(event -> {
             cs.upTemperature();

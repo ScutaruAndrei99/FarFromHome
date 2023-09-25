@@ -1,6 +1,6 @@
 package service;
 
-import constructors.Gate;
+import model.Gate;
 import javafx.scene.image.Image;
 import repository.GateRepository;
 

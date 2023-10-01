@@ -23,7 +23,7 @@ public class ElevatorInterface implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
         ElevatorService es = new ElevatorService();
 
         button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",

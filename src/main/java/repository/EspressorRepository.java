@@ -31,11 +31,12 @@ public class EspressorRepository {
                 );
                 result.add(e);
             }
-            SqlConfig.closeDataBaseConnection();
             return result;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -55,11 +56,12 @@ public class EspressorRepository {
                         rs.getString("TypeCoffee")
                 );
             }
-            SqlConfig.closeDataBaseConnection();
             return prepare;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
     public boolean updatePrepare(PrepareCoffee prepare) {
@@ -73,11 +75,12 @@ public class EspressorRepository {
             statement.setString(4,prepare.getTypeCoffee());
 
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -95,6 +98,8 @@ public class EspressorRepository {
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -112,6 +117,8 @@ public class EspressorRepository {
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -137,6 +144,8 @@ public class EspressorRepository {
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 }

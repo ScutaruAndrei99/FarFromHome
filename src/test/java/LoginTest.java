@@ -1,4 +1,4 @@
-import com.tonevellah.farfromhome.DBUtils;
+import com.tonevellah.farfromhome.SceneManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +33,7 @@ public class LoginTest {
 
     @Test
     public void testRegisterUser() throws Exception {
-        DBUtils dbUtils = new DBUtils();
+        SceneManager sceneManager = new SceneManager();
 
         when(connectionAccount.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
@@ -49,7 +49,7 @@ public class LoginTest {
 
     @Test
     public void testLoginUser() throws Exception {
-        DBUtils dbUtils = new DBUtils();
+        SceneManager sceneManager = new SceneManager();
 
         when(connectionAccount.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);

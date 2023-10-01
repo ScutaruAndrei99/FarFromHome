@@ -36,36 +36,44 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
         UserService us=new UserService();
 
         button_sign_upR.setOnAction(event -> {
-            if (!tf_usernameR.getText().trim().isEmpty() && !tf_firstNameR.getText().trim().isEmpty()
-                    && !tf_lastNameR.getText().trim().isEmpty() && !pf_passwordR.getText().trim().isEmpty()
-                    && !pf_retypePasswordR.getText().trim().isEmpty() && !tf_emailR.getText().trim().isEmpty()
-                    && !tf_retypeEmailR.getText().trim().isEmpty()) {
-                if (!pf_passwordR.getText().equals(pf_retypePasswordR.getText())) {
-                    System.out.println("Check to write the same password");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Check to write the same password");
-                    alert.show();
-                } else if (!tf_emailR.getText().equals(tf_retypeEmailR.getText())){
-                    System.out.println("Check to write the same email");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Check to write the same email");
-                    alert.show();
+            if (us.checkImputFields(tf_usernameR.getText(),tf_firstNameR.getText(), tf_lastNameR.getText(),
+                    pf_passwordR.getText(), pf_retypePasswordR.getText(), tf_emailR.getText(),
+                    tf_retypeEmailR.getText())) {
+
+                if (!us.checkCompatibilityPasswordAndRetype(pf_passwordR.getText(), pf_retypePasswordR.getText())){
+                    prepareAlert("Check to write the same password");
+                }
+                if (!us.checkCompatibilityEmailAndRetype(tf_emailR.getText(), tf_retypeEmailR.getText())){
+                    prepareAlert("Check to write the same email");
                 } else {
-                    if (!us.checkUsernameValability(tf_usernameR.getText())  &&
-                            !us.checkEmailValability(tf_emailR.getText())) {
-                        us.createAccount(tf_usernameR.getText(), tf_firstNameR.getText(), tf_lastNameR.getText(),
-                                pf_passwordR.getText(), tf_emailR.getText());
-                        db.registerUser(event);
+                    if (us.checkUsernameValability(tf_usernameR.getText()) == null) {
+                        if (us.checkEmailValability(tf_emailR.getText()) == null) {
+                            us.createAccount(tf_usernameR.getText(), tf_firstNameR.getText(), tf_lastNameR.getText(),
+                                    pf_passwordR.getText(), tf_emailR.getText());
+                            db.registerUser(event);
+                        }else {
+                            prepareAlert("You cannot use this email.");
+                        }
+                    }else {
+                        prepareAlert("You cannot use this username.");
                     }
                 }
+            } else {
+                prepareAlert("Complete all the fields before sing up");
             }
         });
 
         button_loginR.setOnAction(event -> db.changeScene(event, "/interfaces/login.fxml", "Login!"));
+    }
+
+    public void prepareAlert (String text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(text);
+        alert.show();
     }
 
 }

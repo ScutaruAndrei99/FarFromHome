@@ -23,11 +23,12 @@ public class GateRepository {
                         rs.getBoolean("Status")
                 );
             }
-            SqlConfig.closeDataBaseConnection();
             return gate;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
     public boolean update(Gate gate){
@@ -38,11 +39,11 @@ public class GateRepository {
             statement.setBoolean(1,gate.isOpen());
             statement.setBoolean(2,gate.isStatus());
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
-
     }
 }

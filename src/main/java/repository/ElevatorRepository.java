@@ -27,11 +27,12 @@ public class ElevatorRepository {
                         );
             }
             System.out.println(elevator);
-            SqlConfig.closeDataBaseConnection();
             return elevator;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -44,10 +45,11 @@ public class ElevatorRepository {
             statement.setBoolean(2,elevator.isDoors());
             statement.setBoolean(3, elevator.isUsed());
             statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 }

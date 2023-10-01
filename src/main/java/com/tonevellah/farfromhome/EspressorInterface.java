@@ -23,7 +23,7 @@ public class EspressorInterface implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
         EspressorService es = new EspressorService();
 
         button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",

@@ -30,11 +30,12 @@ public class LightRepository {
                         rs.getBoolean("Boiler")
                 );
             }
-            SqlConfig.closeDataBaseConnection();
             return light;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
     public boolean updateLight(Light light) {
@@ -51,11 +52,12 @@ public class LightRepository {
             statement.setBoolean(6, light.isDressing());
             statement.setBoolean(7, light.isBoiler());
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 }

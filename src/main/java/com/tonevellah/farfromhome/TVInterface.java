@@ -26,7 +26,7 @@ public class TVInterface implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
         TVService ts = new TVService();
 
         button_home.setOnAction(actionEvent -> db.changeScene(actionEvent, "/interfaces/logged-in.fxml",

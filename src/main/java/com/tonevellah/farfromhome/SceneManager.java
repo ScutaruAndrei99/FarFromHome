@@ -12,7 +12,7 @@ import service.TVService;
 import java.io.IOException;
 
 
-public class DBUtils {
+public class SceneManager {
 
     public void changeScene(ActionEvent event, String fxmlFile, String title) {
         try {
@@ -59,7 +59,7 @@ public class DBUtils {
 
     public void tvScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
              Parent root = loader.load();
             TVInterface tv =loader.getController();
             TVService ts = new TVService();
@@ -75,7 +75,7 @@ public class DBUtils {
 
     public void espressorScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Espressor");
@@ -87,7 +87,7 @@ public class DBUtils {
     }
     public void expressorPrepareCoffee(ActionEvent event, String fxmlFile){
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Prepare Coffee");
@@ -100,7 +100,7 @@ public class DBUtils {
 
     public void centralScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             CentralInterface central=loader.getController();
             CentralService cs=new CentralService();
@@ -117,7 +117,7 @@ public class DBUtils {
 
     public void elevatorScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Elevator");
@@ -131,7 +131,7 @@ public class DBUtils {
 
     public void curtainsScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Curtains");
@@ -144,7 +144,7 @@ public class DBUtils {
 
     public void vacuumScene(ActionEvent event, String fxmlFile) {
         try{
-            FXMLLoader loader=new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            FXMLLoader loader=new FXMLLoader(SceneManager.class.getResource(fxmlFile));
             Parent root = loader.load();
             Stage stage =(Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Vacuum");

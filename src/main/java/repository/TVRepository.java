@@ -22,11 +22,12 @@ public class TVRepository {
             while (rs.next()) {
                 TVlist.add(rs.getString("ChannelName1"));
             }
-            SqlConfig.closeDataBaseConnection();
             return TVlist;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
     public Television tvStatus(){
@@ -43,11 +44,12 @@ public class TVRepository {
                     rs.getBoolean("Power")
                 );
             }
-            SqlConfig.closeDataBaseConnection();
             return tv;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
     public String channel(){
@@ -59,11 +61,12 @@ public class TVRepository {
             while (rs.next()) {
                 channel= rs.getString("ChannelName");
             }
-            SqlConfig.closeDataBaseConnection();
             return channel;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -76,11 +79,12 @@ public class TVRepository {
             statement.setBoolean(3, tv.isPower());
 
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
 
     }
@@ -96,16 +100,16 @@ public class TVRepository {
 
             if (rs.next()) {
                 int post = rs.getInt("ChannelPost1"); // Extrage valoarea coloanei "ChannelPost1"
-                SqlConfig.closeDataBaseConnection();
                 return post;
             } else {
                 System.out.println("Nu a fost gasit niciun rand care sa corespunda criteriilor");
-                SqlConfig.closeDataBaseConnection();
                 return -1;
             }
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 

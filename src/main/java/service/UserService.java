@@ -1,64 +1,38 @@
 package service;
 
-
-import javafx.scene.control.Alert;
 import model.User;
 import repository.UserRepository;
-
-import java.util.List;
-import java.util.Map;
 
 public class UserService {
     UserRepository ur= new UserRepository();
 
-    public boolean checkUsernameValability(String user){
-        List<String> usernameList= ur.findAllUsers();
-        for (String search : usernameList) {
-            if (search.equals(user)) {
-                System.out.println("User already exists!");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this username.");
-                alert.show();
-                return true;
-            }
-        }
-        return false;
+    public User checkUsernameValability(String user){
+        return ur.findUserByUsername(user);
     }
-    public boolean checkEmailValability(String email) {
-        List<String> emailList=ur.findAllEmail();
-        for (String search : emailList) {
-            if (search.equals(email)){
-                System.out.println("Email already exists!");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this email.");
-                alert.show();
-                return true;
-            }
-        }
-        return false;
+    public User checkEmailValability(String email) {
+        return ur.findEmailByEmail(email);
     }
-
+    public User findUserByUsernameAndPassword(String username, String password) {
+        return ur.findUserByUserNameAndPassword(username,password);
+    }
     public void createAccount(String username, String first_name,
                               String last_name, String password, String email){
-        User userN = new User(username, first_name, last_name, password, email);
+        User userN = new User.UserBuilder().userName(username).firstName(first_name).last_name(last_name)
+                .password(password).email(email).build();
         ur.createUser(userN);
     }
-    public boolean checkMatchAccount(String username, String password) {
-        Map<String, String> accounts = ur.accountsCheck();
-
-        if (accounts.containsKey(username)) {
-            // Dacă username există, verificăm dacă parola corespunde
-            String storedPassword = accounts.get(username);
-            if (password.equals(storedPassword)) {
-                // Parola corespunde
-                return true;
-            }
+    public boolean checkImputFields(String username, String firstName, String lastName, String password,
+                                    String retypePassword, String email, String retypeEmail) {
+        if (username != null && firstName != null && lastName != null && password != null && retypePassword != null &&
+        email != null && retypeEmail != null){
+            return true;
         }
-        System.out.println("Username or password did not match!");
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText("Username or password did not match!");
-        alert.show();
-        // Username sau parolă incorecte
         return false;
+    }
+    public boolean checkCompatibilityPasswordAndRetype(String password, String retypePassword) {
+        return password.trim().equalsIgnoreCase(retypePassword);
+    }
+    public boolean checkCompatibilityEmailAndRetype(String email, String retypeEmail) {
+        return email.trim().equalsIgnoreCase(retypeEmail.trim());
     }
 }

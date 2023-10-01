@@ -33,7 +33,7 @@ public class LoggedInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
 
         button_home.setOnAction(actionEvent -> db.changeScene(actionEvent,"/interfaces/logged-in.fxml",
                 "Welcome!"));

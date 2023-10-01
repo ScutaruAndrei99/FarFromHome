@@ -7,9 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserRepository {
     public UserRepository() {SqlConfig.getDataBaseConnectionAccount();}
@@ -25,11 +23,12 @@ public class UserRepository {
             statement.setString(4,user.getPassword());
             statement.setString(5,user.getEmail());
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -44,12 +43,13 @@ public class UserRepository {
             statement.setString(4, user.getPassword());
             statement.setString(5,user.getEmail());
             int affectedRows = statement.executeUpdate();
-            SqlConfig.closeDataBaseConnection();
             return affectedRows > 0;
         } catch (SQLException e) {
             System.out.println("3");
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
 
@@ -63,13 +63,77 @@ public class UserRepository {
                 String user= rs.getString("username");
                 users.add(user);
             }
-            SqlConfig.closeDataBaseConnection();
             return users;
         } catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
         }
     }
+
+     public User findUserByUserNameAndPassword(String username, String password) {
+         Connection connection = SqlConfig.getDataBaseConnectionAccount();
+         User user= null;
+         try {
+             PreparedStatement statement = connection.prepareStatement("SELECT username, " +
+                     "first_name, last_name, email FROM accounts WHERE username=? AND password=?");
+             statement.setString(1,username);
+             statement.setString(2,password);
+
+             ResultSet rs = statement.executeQuery();
+             if (rs.next()){
+                 user = new User.UserBuilder().userName(rs.getString(1)).firstName(rs.getString(2))
+                         .last_name(rs.getString(3)).email(rs.getString(4)).build();
+             }
+             return user;
+         } catch (SQLException e) {
+             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
+             throw new RuntimeException(e);
+         } finally {
+             SqlConfig.closeDataBaseConnection();
+         }
+     }
+     public User findUserByUsername(String username){
+         Connection connection = SqlConfig.getDataBaseConnectionAccount();
+         User user= null;
+         try {
+             PreparedStatement statement = connection.prepareStatement("SELECT username " +
+                     " FROM accounts WHERE username=? ");
+             statement.setString(1,username);
+
+             ResultSet rs = statement.executeQuery();
+             if (rs.next()){
+                 user = new User.UserBuilder().userName(rs.getString(1)).build();
+             }
+             return user;
+         } catch (SQLException e) {
+             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
+             throw new RuntimeException(e);
+         } finally {
+             SqlConfig.closeDataBaseConnection();
+         }
+     }
+     public User findEmailByEmail(String email){
+        Connection connection = SqlConfig.getDataBaseConnectionAccount();
+        User user = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT email FROM accounts WHERE email=?");
+            statement.setString(1,email);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()){
+                user = new User.UserBuilder().email(rs.getString(1)).build();
+//                        user.UserBuilder().build();
+            }
+            return user;
+        } catch (SQLException e) {
+            System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
+            throw new RuntimeException(e);
+        } finally {
+            SqlConfig.closeDataBaseConnection();
+        }
+     }
     public List<String> findAllEmail(){
         Connection connection = SqlConfig.getDataBaseConnectionAccount();
         try{
@@ -80,30 +144,12 @@ public class UserRepository {
                 String mail = rs.getString("email");
                 email.add(mail);
             }
-            SqlConfig.closeDataBaseConnection();
             return email;
         }catch (SQLException e) {
             System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
             throw new RuntimeException(e);
-        }
-    }
-    public Map<String, String> accountsCheck() {
-        Connection connection = SqlConfig.getDataBaseConnectionAccount();
-        try {
-            Map<String, String> accounts;
-            accounts = new LinkedHashMap<>();
-            PreparedStatement statement = connection.prepareStatement("SELECT username, password FROM accounts");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                String user = rs.getString("username");
-                String pass = rs.getString("password");
-                accounts.put(user, pass);
-            }
+        } finally {
             SqlConfig.closeDataBaseConnection();
-            return accounts;
-        } catch (SQLException e) {
-            System.out.println("Nu s-a putut realiza conexiunea cu repository-ul");
-            throw new RuntimeException(e);
         }
     }
 }

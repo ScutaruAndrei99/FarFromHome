@@ -35,7 +35,7 @@ public class PrepareCoffeInterface implements Initializable {
 
     public void initialize (URL url, ResourceBundle resourceBundle){
 
-        DBUtils db = new DBUtils();
+        SceneManager db = new SceneManager();
         EspressorService es = new EspressorService();
 
         button_back.setOnAction(event -> {

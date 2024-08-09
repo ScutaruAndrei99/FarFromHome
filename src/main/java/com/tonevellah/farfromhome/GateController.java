@@ -25,6 +25,8 @@ public class GateInterface implements Initializable {
     private Button button_switch;
     @FXML
     public ImageView img_switch;
+    @FXML
+    public ImageView img_liveCamera;
 
 
 

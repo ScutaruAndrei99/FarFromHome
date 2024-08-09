@@ -18,6 +18,8 @@ public class ElevatorInterface implements Initializable {
     @FXML
     private Button button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8, button_9;
     @FXML
+    protected TextField text_currentFloor;
+    @FXML
     private TextField textFieldFloor;
 
     @Override
@@ -50,9 +52,11 @@ public class ElevatorInterface implements Initializable {
             es.choiceFloor(floor);
             textFieldFloor.setText("");
         });
-        button_doorClose.setOnAction(event -> {
-
-
+        button_doorOpen.setOnAction(event -> {
+            es.doorOpen();
+        });
+        button_doorClose.setOnAction(event ->{
+            es.doorClose();
         });
     }
 }

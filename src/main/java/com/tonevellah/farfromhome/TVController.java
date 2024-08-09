@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import service.TVService;
@@ -22,6 +25,11 @@ public class TVInterface implements Initializable {
     private Circle circle_status;
     @FXML
     private ComboBox<String> comboBoxChannel;
+    @FXML
+    private MediaView mediaView_channel;
+    private Media media_channel;
+    private MediaPlayer mediaPlayer_channel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,8 +47,10 @@ public class TVInterface implements Initializable {
             ts.PressButtonPower();
             if (circle_status.getFill().toString().equals("0xff0000ff")){
                 circle_status.setFill(Color.GREEN);
+//                ts.ChangeChannel();
             } else {
                 circle_status.setFill(Color.RED);
+
             }
         });
         comboBoxChannel.getStylesheets().add("/cssStyle/BoxSizeChannel.css");
